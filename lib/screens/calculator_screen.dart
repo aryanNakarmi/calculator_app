@@ -29,9 +29,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     "7",
     "8",
     "9",
-    "*",
-    "%",
-    "0",
+ 
     ".",
     "=",
   ];
