@@ -38,6 +38,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final _globalKey = GlobalKey<FormState>();  
   @override
   Widget build(BuildContext context) {
-    return Scaffold()
+    return Scaffold();
   }
 }
