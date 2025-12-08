@@ -16,7 +16,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final List<String> characters = [
     "C",
     "*",
-    
+    "/",
     "<-",
     "1",
     "2",
