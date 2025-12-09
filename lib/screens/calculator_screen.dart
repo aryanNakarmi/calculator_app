@@ -36,6 +36,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     "=",
   ];
   final _globalKey = GlobalKey<FormState>();  
+
+  void _onButtonPressed(String char){
+    setState(() {
+      if(char == "C"){
+        _controller.clear();
+        first= 0;
+        second = 0;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold();
