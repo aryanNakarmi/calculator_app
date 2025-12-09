@@ -43,6 +43,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         _controller.clear();
         first= 0;
         second = 0;
+        operator = "";
+      }else if(char == "<-"){
+        if(_controller.text.isNotEmpty){
+          _controller.text = _controller.text.substring(0, _controller.text.length -1);
+        }
       }
     });
   }
