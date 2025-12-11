@@ -88,7 +88,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(224, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(223, 0, 0, 0),
       appBar: AppBar(
         title: const Text(
           "Calculator App",
@@ -103,15 +103,83 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Padding(padding: const EdgeInsetsGeometry.all(16.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 30,),
-            
-          ],
+        child: Padding(
+          padding: const EdgeInsetsGeometry.all(16.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 30),
+
+              Expanded(
+                flex: 2,
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  alignment: Alignment.bottomRight,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      _controller.text.isEmpty ? '0' : _controller.text,
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(
+                        fontSize: 56,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.white,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              Expanded(
+                flex: 5,
+                child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                  ),
+                  itemCount: characters.length,
+                  itemBuilder: (context, index) {
+                    final char = characters[index];
+                    return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed: () => _onButtonPressed(char),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          char,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
-        )
-        ),
+      ),
     );
   }
 }
