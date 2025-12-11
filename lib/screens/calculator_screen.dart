@@ -48,7 +48,39 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         if(_controller.text.isNotEmpty){
           _controller.text = _controller.text.substring(0, _controller.text.length -1);
         }
-      }
+      }else if(char == "+"||
+       char == "-"|| 
+       char == "*"|| 
+       char == "/"|| 
+       char == "%"){
+        first = double.parse(_controller.text);
+        operator = char;
+        _controller.clear();
+       }else if(char == "="){
+        second = double.parse(_controller.text);
+        double result = 0;
+        switch(operator){
+          case "+":
+          result = first + second;
+          break;
+          case "-":
+          result = first - second;
+          break;
+          case "*":
+          result = first * second;
+          break;
+          case "/":
+          result =  second!=0 ? first/second : 0;
+          break;
+          case "%":
+          result = first % second;
+          break;
+        }
+        _controller.text = result.toString();
+      
+       }else{
+        _controller.text += char;
+       }
     });
   }
   @override
